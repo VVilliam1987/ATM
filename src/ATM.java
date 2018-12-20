@@ -20,4 +20,4 @@ public class ATM {
         System.out.format("Total amount of banknotes: " + "%d", mBanknote);
 
     } // takeMoney
-} // ATM (перевірка чи працює новий комміт)
+} // ATM
