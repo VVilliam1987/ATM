@@ -7,16 +7,17 @@ public class ATM {
 
         mBanknote = 0;
 
-        for ( int e = 0; e < 9; ++e) {
+        for (int e = 0; e < 9; ++e) {
 
             mElem = mValue[e]; // номінал купюри
-            mBanknote += mInput / mElem; //видано кількість купюр певного номіналу
-            mInput %= mElem; //залишок після видачі певним номіналом
+            mBanknote += mInput / mElem; // видано кількість купюр певного номіналу
+            mInput %= mElem; // залишок після видачі певним номіналом
 
-        } //for
+            if (mInput > 0) System.out.println(mElem + ": " + mBanknote);
 
-        if(mInput > 0) mBanknote = -1;
+        } // for
+
         System.out.format("Total amount of banknotes: " + "%d", mBanknote);
 
-    } //takeMoney
-} //ATM
+    } // takeMoney
+} // ATM
