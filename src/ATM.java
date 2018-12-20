@@ -13,7 +13,7 @@ public class ATM {
             mBanknote += mInput / mElem; // видано кількість купюр певного номіналу
             mInput %= mElem; // залишок після видачі певним номіналом
 
-            if (mInput > 0) System.out.println(mElem + ": " + mBanknote);
+            if (mInput > 0 ) System.out.println(mElem + ": " + mBanknote);
 
         } // for
 
