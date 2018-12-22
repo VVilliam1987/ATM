@@ -1,6 +1,7 @@
 public class User {
 
-    String mUserPassword, mUserPin;
+    private String mUserPassword;
+    String mUserPin;
     final double BALANCE;
 
     public User(String pinCode, double balance) {
@@ -8,4 +9,13 @@ public class User {
         mUserPassword = pinCode;
         BALANCE = balance;
     }
+
+    public String getmUserPassword() {
+        return mUserPassword;
+    }
+
+    public void setmUserPassword(String mUserPassword) {
+        this.mUserPassword = mUserPassword;
+    }
+
 }

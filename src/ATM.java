@@ -2,12 +2,10 @@ import java.util.Scanner;
 
 public class ATM {
 
-    int[] mValue = {500, 200, 100, 50, 20, 10, 5, 2, 1};
-    int[] mAmount = {20, 35, 45, 60, 25, 75, 30, 15, 10};
-    int mInput, mElem, mBanknote, mMoney;
+    private int[] mValue = {500, 200, 100, 50, 20, 10, 5, 2, 1};
+    private int mInput, mElem, mBanknote, mMoney;
 
     User user = new User("1987", 19303.87);
-
 
     public void logIn() {
 
@@ -15,15 +13,16 @@ public class ATM {
         System.out.println("Please, enter your pin-code:");
         user.mUserPin = id.nextLine();
 
-        if (user.mUserPin.equals(user.mUserPassword)) {
+        if (user.mUserPin.equals(user.getmUserPassword())) {
 
             startWork();
+
         } //if
 
         else {
 
             System.out.println("Incorrect login. Please, try once more");
-                        logIn(); //процедура починається заново
+            logIn(); //процедура починається заново
 
         } //else
 
