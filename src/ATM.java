@@ -5,10 +5,10 @@ public class ATM {
     int[] mValue = {500, 200, 100, 50, 20, 10, 5, 2, 1};
     int[] mAmount = {40, 55, 65, 80, 95, 115, 70, 45, 10};
     int mInput, mElem, mBanknote, mMoney;
-    int mUserPassword, mUserPin;
+    String mUserPassword, mUserPin;
     final double BALANCE;
 
-    public ATM(int pinCode, double balance) {
+    public ATM(String pinCode, double balance) {
 
         mUserPassword = pinCode;
         BALANCE = balance;
@@ -18,9 +18,9 @@ public class ATM {
 
         Scanner id = new Scanner(System.in);
         System.out.println("Please, enter your pin-code:");
-        mUserPin = id.nextInt();
+        mUserPin = id.nextLine();
 
-        if (mUserPin == mUserPassword) {
+        if (mUserPin.equals(mUserPassword)) {
 
             Scanner scan = new Scanner(System.in);
             System.out.println("Welcome!");
@@ -33,6 +33,7 @@ public class ATM {
 
         else {
             System.out.println("Incorrect login. Please, try once more");
+            start(); //процедура починається заново
         } //else
     }
 
@@ -58,6 +59,7 @@ public class ATM {
 
         else {
             System.out.println("Unfortunately, you do not have this sum of money to withdraw it. Please, try once more.");
+            takeMoney(); //процедура починається заново
         } //else
 
     } //takeMoney
