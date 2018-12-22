@@ -20,4 +20,5 @@ public class ATM {
         System.out.println("Total amount of banknotes: " + mMoney);
 
     } //takeMoney
-} //ATM
+}
+
