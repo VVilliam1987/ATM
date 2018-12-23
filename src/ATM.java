@@ -3,35 +3,41 @@ import java.util.Scanner;
 public class ATM {
 
     private int[] mValue = {500, 200, 100, 50, 20, 10, 5, 2, 1};
-    private int mInput, mElem, mBanknote, mMoney;
+    final int[] AMOUNT = {20, 25, 20, 25, 30, 35, 35, 25, 10};
+    private int mInput, mElement, mBanknote, mMoney, mAmountElement, mNumber;
 
     User user = new User("1987", 19303.87);
 
     public void logIn() {
 
-        Scanner id = new Scanner(System.in);
-        System.out.println("Please, enter your pin-code:");
-        user.mUserPin = id.nextLine();
+        boolean repeat = true;
+        do {
 
-        if (user.mUserPin.equals(user.getmUserPassword())) {
+            Scanner id = new Scanner(System.in);
+            System.out.println("Please, enter your pin-code:");
+            user.mUserPin = id.nextLine();
 
-            startWork();
+            if (user.mUserPin.equals(user.getmUserPassword())) {
 
-        } //if
+                repeat = false;
+                System.out.println("Welcome!");
+                startWork();
 
-        else {
+            } //if
 
-            System.out.println("Incorrect login. Please, try once more");
-            logIn(); //процедура починається заново
+            else {
 
-        } //else
+                System.out.println("Incorrect login. Please, try once more.");
+
+            } //else
+
+        } while (repeat); //do
 
     } //logIn
 
-    public void startWork(){
+    public void startWork() {
 
         Scanner scan = new Scanner(System.in);
-        System.out.println("Welcome!");
         System.out.println("Please, enter the sum of money, you want to withdraw:");
         mInput = scan.nextInt();
         System.out.println("You want to withdraw " + mInput + " dollars.");
@@ -39,7 +45,7 @@ public class ATM {
 
     } //startWork
 
-    public void takeMoney(){
+    public void takeMoney() {
 
         mBanknote = 0;
 
@@ -47,11 +53,21 @@ public class ATM {
 
             for (int e = 0; e < mValue.length; ++e) {
 
-                mElem = mValue[e]; //номінал купюри з масиву
-                mBanknote = mInput / mElem; //кількість виданих купюр певного номіналу
-                if (mInput > 0 && mBanknote > 0) System.out.println(mElem + ": " + mBanknote + "."); //if
+                mElement = mValue[e];
+                mAmountElement = AMOUNT[e];
+
+                mBanknote = mInput / mElement;
+                mNumber = mAmountElement - mBanknote;
+
+                if (mInput > 0 && mBanknote > 0) {
+
+                    System.out.println(mElement + " given: " + mBanknote + ".");
+                    System.out.println(mElement + " left: " + mNumber + ".");
+
+                } //if
+
                 mMoney += mBanknote;
-                mInput %= mElem; //залишок після видачі
+                mInput %= mElement;
 
             } //for
 
